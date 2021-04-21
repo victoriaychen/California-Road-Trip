@@ -4,31 +4,34 @@
 <head>
     <meta charset="utf-8">
     <title>California Road Trip</title>
+    <!-- Bootstrap stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <!-- Font awesome -->
     <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
     <style>
-    /* Navigation bar */
-    .navbar {
-        padding: 0 0 4.5rem;
-    }
+        /* Navigation bar */
+        .navbar {
+            padding: 0 0 1rem;
+        }
 
-    .navbar-brand {
-        font-family: "Ubuntu";
-        font-weight: bold;
-        font-size: 2.5rem;
-    }
+        .navbar-brand {
+            font-family: "Poppins";
+            font-weight: bold;
+            font-size: 2rem;
+        }
 
-    .nav-item {
-        padding: 0 18px;
-    }
+        .nav-item {
+            padding: 0 15px;
+        }
 
-    .nav-link {
-        font-family: "Montserrat";
-        font-size: 1.25rem;
-        font-weight: 100;
-    }
+        .nav-link {
+            font-family: "Poppins";
+            font-size: 1.25rem;
+            font-weight: 100;
+        }
 
         /* Testimonials */
         #testimonials {
@@ -46,15 +49,20 @@
             line-height: 1.5;
         }
 
-
         /* footer section */
         #footer {
             text-align: center;
+            font-family: "Poppins";
             background-color: #aee6e6;
         }
 
         .footer-icon {
             margin: 1%;
+        }
+
+        /* Containers */
+        .container-fluid {
+            padding: 7% 10%;
         }
     </style>
 </head>
@@ -97,37 +105,37 @@
         $('.dropdown-item').dropdown();
     </script>
 
-<section class="colored-section" id="testimonials">
+    <section id="testimonials">
 
-    <!-- Customer testimonial -->
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
-                <h3 class-"testimonial-text">I recommended this app for my friends!</h3>
+        <!-- Customer testimonial -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <h3 class-"testimonial-text">I recommended this app for my friends!</h3>
 
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <h3 class-"testimonial-text">Using this app makes my california road trip more fun and less stressful.</h3>
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <h3 class-"testimonial-text">After using this app for my California road trip, I been using it for the last few years. </h3>
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-                <h3 class-"testimonial-text">Using this app makes my california road trip more fun and less stressful.</h3>
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-                <h3 class-"testimonial-text">After using this app for my California road trip, I been using it for the last few years. </h3>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</section>
+    </section>
 
-    <footer class="white-section" id="footer">
+    <footer id="footer">
         <div class="container-fluid">
             <i class="footer-icon fab fa-twitter"></i>
             <i class="footer-icon fab fa-facebook"></i>
