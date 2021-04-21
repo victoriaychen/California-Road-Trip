@@ -6,10 +6,55 @@
     <title>California Road Trip</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2">
+    <!-- Font awesome -->
+    <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
     <style>
+    /* Navigation bar */
+    .navbar {
+        padding: 0 0 4.5rem;
+    }
+
+    .navbar-brand {
+        font-family: "Ubuntu";
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+
+    .nav-item {
+        padding: 0 18px;
+    }
+
+    .nav-link {
+        font-family: "Montserrat";
+        font-size: 1.25rem;
+        font-weight: 100;
+    }
+
+        /* Testimonials */
+        #testimonials {
+            text-align: center;
+        }
+
+        .testimonial-image {
+            width: 10%;
+            border-radius: 100%;
+            margin: 20px;
+        }
+
         .testimonial-text {
             font-size: 3rem;
             line-height: 1.5;
+        }
+
+
+        /* footer section */
+        #footer {
+            text-align: center;
+            background-color: #aee6e6;
+        }
+
+        .footer-icon {
+            margin: 1%;
         }
     </style>
 </head>
@@ -35,12 +80,12 @@
                             Cities
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="LosAngeles.html">Los Angeles</a></li>
+                            <li><a class="dropdown-item" href="Napa.html">Napa</a></li>
+                            <li><a class="dropdown-item" href="SanDiego.html">San Diego</a></li>
                             <li><a class="dropdown-item" href="SanFrancisco.html" data-toggle="dropdown">San Francisco</a></li>
-                            <li><a class="dropdown-item" href="#">Palm Spring</a></li>
-                            <li><a class="dropdown-item" href="#">San Jose</a></li>
-                            <li><a class="dropdown-item" href="#">Los Angeles/a></li>
-                            <li><a class="dropdown-item" href="#">Sacramento</a></li>
-                            <li><a class="dropdown-item" href="#">San Diego</a></li>
+                            <li><a class="dropdown-item" href="SantaCruz.html">Santa Cruz/a></li>
+                            <li><a class="dropdown-item" href="SantaBarbara.html">Santa Barbara/a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,25 +97,7 @@
         $('.dropdown-item').dropdown();
     </script>
 
-    <!-- slideshow -->
-    <div id="slideshow">
-        <div>
-          <img src="images/home1.jpg">
-        </div>
-        <div>
-          <img src="images/home2.jpg">
-        </div>
-        <div>
-          <img src="images/home3.jpg">
-        </div>
-        <div>
-            <img src="images/home4.jpg">
-        </div>
-        <div>
-            <img src="images/home5.jpg">
-        </div>
-     </div>
-
+<section class="colored-section" id="testimonials">
 
     <!-- Customer testimonial -->
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -98,7 +125,17 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+</section>
 
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+            <i class="footer-icon fab fa-twitter"></i>
+            <i class="footer-icon fab fa-facebook"></i>
+            <i class="footer-icon fab fa-instagram"></i>
+            <i class="footer-icon fas fa-envelope"></i>
+            <p>© Copyright 2021 California Road Trip</p>
+        </div>
+    </footer>
 
 </body>
 
