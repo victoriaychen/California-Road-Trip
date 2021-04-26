@@ -11,7 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <!-- Font awesome -->
     <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
+
     <style>
+        Body {
+            font-family: "Poppins";
+        }
+
         /* Navigation bar */
         .navbar {
             padding: 0 0 1rem;
@@ -37,18 +42,24 @@
         #testimonials {
             text-align: center;
             padding: 7% 10%;
-            /* background-color: #ffda77; */
         }
-
-        /* .testimonial-image {
-            width: 10%;
-            border-radius: 100%;
-            margin: 20px;
-        } */
 
         .testimonial-text {
             font-size: 3rem;
             line-height: 1.5;
+        }
+
+        .carousel-control-next-icon:after
+        {
+          content: '>';
+          font-size: 55px;
+          color: #000000;
+        }
+
+        .carousel-control-prev-icon:after {
+          content: '<';
+          font-size: 55px;
+          color: #000000;
         }
 
         /* footer section */
@@ -71,8 +82,7 @@
 
 <body>
     <!-- Bootstrap Navbar -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #aee6e6;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">California Road Trip</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +94,7 @@
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="yourTrip.html">History</a>
+                        <a class="nav-link" href="yourTrip.html">Your Trip</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -111,16 +121,19 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <!-- <img src="..." class="d-block w-100" alt="..."> -->
-                    <p class-"testimonial-text">I recommended this app for my friends!</p>
+                    <p class-"testimonial-text">I recommended this app for all of my friends who are planning to visit Califonria!</p>
+                    <p class-"testimonial-text">-Alyssa, visited California in March 2021</p>
 
                 </div>
                 <div class="carousel-item">
                     <!-- <img src="..." class="d-block w-100" alt="..."> -->
                     <p class-"testimonial-text">Using this app makes my california road trip more fun and less stressful.</p>
+                    <p class-"testimonial-text">-Mark, visited California in August 2020</p>
                 </div>
                 <div class="carousel-item">
                     <!-- <img src="..." class="d-block w-100" alt="..."> -->
-                    <p class-"testimonial-text">After using this app for my California road trip, I been using it for the last few years. </p>
+                    <p class-"testimonial-text">After using this app for my California road trip, I have been using it for the last few years. </p>
+                    <p class-"testimonial-text">-Elise, visited California in January 2020</p>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -136,7 +149,7 @@
 
     <footer id="footer">
         <div class="container-fluid">
-            <i class="footer-icon fab fa-twitter"></i>
+            <i class="footer-icon fab fa-twitter"><href=""></a></i>
             <i class="footer-icon fab fa-facebook"></i>
             <i class="footer-icon fab fa-instagram"></i>
             <i class="footer-icon fas fa-envelope"></i>
