@@ -37,6 +37,40 @@
             font-size: 1.25rem;
             font-weight: 100;
         }
+		
+		/*city cards*/
+		@media screen and (min-width: 400px){
+			#container{
+			grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media screen and (min-width: 1000px){
+				#container{
+				grid-template-columns: repeat(3, 1fr);
+				}
+		}
+	
+		body{
+			margin:0;
+			width: 100vw;
+			position: relative;
+		}
+	
+		#container{
+			display:grid;
+			margin-left:20px;
+			margin-right:20px;
+			margin-top: 30px;
+			position: relative;
+			padding: 10px;
+			grid-gap:2em;
+		}
+		.box {
+			position:relative;
+			font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+			height: 200px;
+			background-color: #ffa45b;
+		}
 
         /* Testimonials */
         #testimonials {
@@ -113,7 +147,23 @@
             </div>
         </div>
     </nav>
-
+	
+	
+	<section id="container">
+		<div class="box">San Francisco
+		</div>
+		<div class="box">LA
+		</div>
+		<div class="box">San Diegp
+		</div>
+		<div class="box">Santa Cruz
+		</div>
+		<div class="box">Santa Barbara
+		</div>
+		<div class="box">Napa
+		</div>
+	</section>
+	
     <section id="testimonials">
 
         <!-- Customer testimonial -->
