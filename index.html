@@ -4,33 +4,74 @@
 <head>
     <meta charset="utf-8">
     <title>California Road Trip</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+    <script type="text/javascript">  
+        //Function to shrink 'top' at scroll
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.getElementById("slideshow").style.height = "200px";
+          } else {
+            document.getElementById("slideshow").style.height = "400px";
+          }
+        }
+        </script>
 
     <style>
-  #slideshow {
-                position: relative;
+      h1 {
+        font-family: 'Optima', sans-serif;
+        text-align: center;
+        padding-top: 30px;
+        font-size: 60px;
+        font-weight: lighter;
+        color: #000;
+        letter-spacing: 3px;
+        text-align: center;
+        object-fit: cover;
+        z-index: 200;
+        text-transform: lowercase;
+
+      }
+
+      h2 {
+        font-family: Snell Roundhand, cursive;
+        font-size: 30px;
+        text-align: center;
+        font-style: italic;
+        color: #ffa45b;
+        letter-spacing: 2px;
+      }
+
+
+      h3{
+
+
+      }
+
+      #slideshow { 
+                position: relative; 
                 overflow: hidden;
                 background-size: cover;
-                width: 100%;
-                height: 400px;
+                width: 100%; 
+                height: 400px; 
                 z-index: -200;
                 transition: 0.7s;
             }
-
+            
             #slideshow img{
-                width: 100%;
+                width: 100%; 
                 margin-top: -10%;
                 transform: translateY(10%);
             }
 
-            #slideshow > div {
-                position: absolute;
+            #slideshow > div { 
+                position: absolute; 
             }
-
+            
             .wave{
                 position: absolute;
                 top: 80%;
@@ -39,7 +80,7 @@
                 text-align: center;
                 transform: translate(-50%, -80%);
             }
-
+            
             label{
                 font-weight: 500;
                 color: rgb(255, 255, 255);
@@ -47,7 +88,7 @@
                 letter-spacing: 3px;
                 text-align: center;
             }
-
+            
             label span{
                 display: inline-block;
                 object-fit: cover;
@@ -56,7 +97,7 @@
                 font-weight: 500;
                 transition: 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);
             }
-
+            
             label:hover span{
                 color: #eeb867;
                 transform: translateY(-30px);
@@ -67,31 +108,47 @@
         .middle {
           transition: .5s ease;
           opacity: 0;
-          width: 100%;
+          width: 100%; 
           position: absolute;
           top: 40%;
           left: 30%;
           text-align: center;
-        }
+        }  
 
 
+        .image {
+          border-radius: 6px;
+          width: 400px;
+          height: 267px;
+          transition: all 1s;
+        }   
+         
+        
         .block:hover .middle {
           opacity: 1;
         }
 
+        .block:hover .text {
+          opacity: 1;
+        }
+        
         .text {
           width: 30%;
           color: white !important;
-          font-size: 12px;
-          padding: 16px 32px;
-          letter-spacing: 1px;
+          font-size: 15px;
+          padding: 0px 0px;
+          letter-spacing: 0.5px;
+          text-align: center;
+          position: relative;
+          font-weight: 500;
         }
-
+        
         .text a {
           color: white !important;
         }
 
-
+        
+        
         p {
           letter-spacing: 3px;
           color: #7B7B7B;
@@ -99,35 +156,37 @@
           bottom: 15px;
           font-size: 100%;
         }
-
+        
         .block {
           display: inline-block;
           width: 500px;
-          margin: 5px 30px 60px 30px;
+          margin: 5px 10px 10px 10px;
           position: relative;
           transition: all 1s;
-        }
 
-        .block:hover {
+        }
+        
+        .image:hover {
           transform: scale(1.05);
-          opacity: 0.3;
+          opacity: 0.2;
         }
-
+        
         .row {
           display: flex;
           justify-content: center;
           padding-top: 30px;
         }
-
+        
         .city {
           font-size: 32px;
           letter-spacing: 3px;
           text-transform: uppercase;
           color:white;
           position: absolute;
-          bottom: -18px;
+          bottom: -16px;
           left: 16px;
-        }
+
+        } 
 </style>
 </head>
 
@@ -172,15 +231,23 @@
 
 <div id="slideshow">
             <div>
-              <img src="slide1.jpg">
+              <img src="images/slide1.jpg">
             </div>
             <div>
-              <img src="slide2.jpg">
+              <img src="images/slide2.jpg">
             </div>
             <div>
-              <img src="slide3.jpg">
+              <img src="images/slide3.jpg">
             </div>
-         </div>
+            <div>
+              <img src="images/slide4.jpg">
+            </div>
+            <div>
+              <img src="images/slide5.jpg">
+            </div>
+
+
+</div>
 
   <script>
             //Slide show animation
@@ -209,29 +276,85 @@
         </script>
 
 
-
-<h3 class = "slogan"> Plan your perfect California Road Trip </h3>
+<h1>California Road Trip </h1>
+<h2 class = "slogan"> Plan your perfect west coast getaway </h2>
 
 
 <div class="row">
     <div class="block">
-         <img src="SF.jpg" alt=“”>
+         <img class = "image" src="images/SF.jpg" alt=“”>
           <div class="middle">
-          <div class = "text"> <a href= "SanFrancisco.html"> Learn More </a></div>
+            
+            <div class = "text"> 
+              <p>See the heart of the Golden State.</p> 
+              <a href= "SanFrancisco.html"> Learn More </a>
+            </div>
           </div>
-          <h3 class="city">San Francisco</h3>
-
+        <h3 class="city">San Francisco</h3>      
     </div>
     <div class="block">
-         <img src="SF.jpg" alt=“”>
+         <img class = "image" src="images/santacruz.jpg" alt=“”>
           <div class="middle">
-          <div class = "text"> <a href= "SanFrancisco.html"> Learn More </a></div>
+            
+          <div class = "text"> 
+            <p>Visit this energetic surf town.</p> 
+            <a href= "SantaCruz.html"> Learn More </a></div>
           </div>
-          <h3 class="city">San Francisco</h3>
+          <h3 class="city">Santa Cruz</h3>
+              
+    </div>
 
+
+</div>
+<div class = "row">
+  <div class="block">
+         <img class = "image" src="images/SB.jpg" alt=“”>
+          <div class="middle">
+            
+          <div class = "text"> 
+            <p>The perfect pair: beach views and historic sites.</p> 
+            <a href= "SantaBarbara.html"> Learn More </a></div>
+          </div>
+          <h3 class="city">Santa Barbara</h3>
+              
+    </div>
+  <div class="block">
+         <img class = "image" src="images/LA.jpg" alt=“”>
+          <div class="middle">
+            
+          <div class = "text"> 
+            <p>Visit the entertainment hub of California.</p> 
+            <a href= "LosAngeles.html"> Learn More </a></div>
+          </div>
+          <h3 class="city">Los Angeles</h3>
+              
     </div>
 </div>
 
+<div class = "row">
+  <div class="block">
+         <img class = "image" src="images/Napa.jpg" alt=“”>
+          <div class="middle">
+            
+          <div class = "text"> 
+            <p>Explore the vineyards and go wine tasting.</p> 
+            <a href= "Napa.html"> Learn More </a></div>
+          </div>
+          <h3 class="city">Napa Valley</h3>
+              
+    </div>
+  <div class="block">
+      <img class = "image" src="images/SD.jpg" alt=“”>
+          <div class="middle">
+            
+            <div class = "text"> 
+              <p>Craving a beach trip and authentic Mexican food?</p> 
+              <a href= "SanDiego.html"> Learn More </a>
+            </div>
+          </div>
+        <h3 class="city">San Diego</h3>       
+    </div>
+</div>
 
 </body>
 
