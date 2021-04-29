@@ -7,12 +7,12 @@ MongoClient.connect(url, function(err, db) {
 
     dbo.collection("cities").find({}, {
         projection: {
-            name: 1,
-            address: 1
+            city: 0,
+            address: 0
         }
     }).toArray(function(err, result) {
         if (err) throw err;
-        console.log(result);
+        console.log(result[1].address);
     });
     // var myquery = {
     //     address: "Valley 345"
@@ -31,6 +31,6 @@ MongoClient.connect(url, function(err, db) {
     // });
 });
 
-$(function() {
-    $ ".save"
-})
+// $(function() {
+//     $ ".save"
+// })
