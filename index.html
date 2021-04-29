@@ -55,7 +55,7 @@
             text-transform: lowercase;
         }
 
-     
+
 
         /* Navigation bar */
         .navbar {
@@ -143,12 +143,12 @@
             height: 230px;
             margin: 5px 15px 10px 15px;
             position: relative;
-            transition: all 1s; 
+            transition: all 1s;
     }
         .middle {
           transition: .5s ease;
           opacity: 0;
-          width: 300px; 
+          width: 300px;
           position: absolute;
           text-align: center;
           display:flex;
@@ -201,7 +201,7 @@
           font-size: 100%;
         }
 
-       
+
 
         .block:hover .middle {
           opacity: 1;
@@ -273,7 +273,12 @@
 
         .footer-icon {
             margin: 1%;
+            color: #000000;
         }
+
+		.footer-icon:hover{
+			color: #FFF;
+		}
 
         /* Containers */
         .container-fluid {
@@ -406,7 +411,7 @@
 
         </div>
     </div>
-</section>  
+</section>
 
     <div class="row">
       <div class="block">
@@ -480,9 +485,9 @@
 
     <footer id="footer">
         <div class="container-fluid">
-            <i class="footer-icon fab fa-facebook"></i>
-            <i class="footer-icon fab fa-instagram"></i>
-            <i class="footer-icon fas fa-envelope"></i>
+            <a href="https://www.facebook.com"><i class="footer-icon fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com"><i class="footer-icon fab fa-instagram"></i></a>
+            <a href="mailto:CaliforniaRoadTrip@gmail.com"><i class="footer-icon fas fa-envelope"></i></a>
             <p>© Copyright 2021 California Road Trip</p>
         </div>
     </footer>
