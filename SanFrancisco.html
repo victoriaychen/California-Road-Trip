@@ -12,6 +12,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
         <!-- Font awesome -->
         <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
         <style>
             /* Navigation bar */
@@ -330,12 +332,18 @@
 
         <div id="hero">
             San Francisco
-            <form action="app.js">
+            <form>
                 <input type="button" class="btn" value="Save" />
             </form>
         </div>
 
+        <script type="text/javascript">
+            $(".btn").click(function() {
+                alert("This city is saved to your trip!");
+
+            });
         </script>
+
         <div class="banner">
             Places to visit
         </div>
