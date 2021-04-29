@@ -44,24 +44,22 @@
         }
 	
 
-	#wrapper {
-		background-color: #fbf6f0;
-		margin: 28px;
-		padding: 0px 10px 5px 10px;
-		display: grid;
-		
-	}
-	@media screen and (max-width: 600px){
+	@media screen and (min-width: 350px){
 			.container{
 			grid-template-columns: repeat(2, 1fr);
 			}
+			/*.box{
+				height: 
+			}*/
 	}
 	@media screen and (min-width: 600px){
-			.container{
-			grid-template-columns: repeat(3, 1fr);
-			}
 			#wrapper{
 			grid-template-columns: repeat(2, 1fr);
+			}
+	}
+	@media screen and (min-width: 800px){
+			.container{
+			grid-template-columns: repeat(3, 1fr);
 			}
 	}
 	@media screen and (min-width: 1000px){
@@ -74,6 +72,7 @@
 			margin:0;
 			width: 100vw;
 			position: relative;
+			font-family: "Poppins";
 		}
 	
 		.banner{
@@ -84,11 +83,17 @@
 			font-size: 30px;
 		}
 	
+		#wrapper {
+			background-color: #fbf6f0;
+			margin: 28px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			text-align: center;
+			display: grid;
+		}
+	
 		.container{
 			display:grid;
-			margin-left:20px;
-			margin-right:20px;
-			margin-top: 30px;
 			position: relative;
 			padding: 10px;
 			grid-gap:2em;
@@ -96,13 +101,13 @@
 	
 		.box {
 			position:relative;
-			font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
 			height: 200px;
 			background-color: #ffa45b;
 			text-align: center;
-			padding-top: 50%;
 			color:#FFF;
 			border-radius: 5px;
+			padding-top: 10px;
+			font-size: 130%;
 		}
 	
 		#hero {
@@ -112,9 +117,12 @@
 			margin-right:20px;
 			margin-top: 30px;
 			position: relative;
-			padding: 70px 20px 0px 20px;
-			background-color: #aee6e6;
-			height:200px;
+			padding: 100px 20px 0px 20px;
+			/*background-color: #aee6e6;*/
+			height:300px;
+			background-image: url("sandiego.jpeg");
+			background-position: center;
+			background-size: cover;
 			
 		}
 		
@@ -127,7 +135,6 @@
 			text-align: center;
 			text-decoration: none;
 			font-size: 18px;
-			font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
 			position: relative;
 			padding-top:3px;
 			padding-bottom: 3px;
@@ -153,7 +160,7 @@
  
 			// Step 2: Set the URL for the AJAX request to be the JSON file
  
-		request2.open("GET", "https://api.openweathermap.org/data/2.5/onecall?lat=71.0589&lon=42.3601&exclude=hourly,daily&appid=6e477249e2b1e0f4d6461a66a1947eaa", true)
+		request2.open("GET", "https://api.openweathermap.org/data/2.5/onecall?lat=32.715736&lon=-117.161087&exclude=hourly,daily&appid=6e477249e2b1e0f4d6461a66a1947eaa", true)
 
 			console.log("2 - opened request file");
  
@@ -196,7 +203,7 @@
 			console.log("1. request object created");
  			
 			//request json file from sunrise-sunset.org, fill in lat and lng for Somerville
-			request1.open("GET", "https://api.sunrise-sunset.org/json?lat=42.3875968&lng=-71.0994968", true)
+			request1.open("GET", "https://api.sunrise-sunset.org/json?lat=32.715736&lng=-117.161087", true)
 
 			console.log("2. opened request file");
  
@@ -237,7 +244,7 @@
             console.log("1 - request object created");
 
 
-            request.open("GET", "http://api.openweathermap.org/data/2.5/air_pollution?lat=42.4184&lon=71.106&appid=9eb8bd1cc3e0712eec15fc85f42632dd", true);
+            request.open("GET", "http://api.openweathermap.org/data/2.5/air_pollution?lat=32.715736&lon=-117.161087&appid=9eb8bd1cc3e0712eec15fc85f42632dd", true);
             console.log("2 - opened request file");
  
             request.onreadystatechange = function() {
@@ -334,22 +341,32 @@
 		Places to visit
 	</div>
 	<div class="container">
-		<div class="box">place1
+		<div class="box">Midway Aircraft Carrier Museum
+			<div style="font-size:70%">A once-in-a-lifetime opportunity to explore a historic aircraft carrier.  Activities for all ages including self-guided audio tours, theater, flight simulators, climb-in aircraft, ejection seats and cockpits, guided tours of the bridge and more. </div>
 		</div>
-		<div class="box">place2
+		<div class="box">Sunset Cliffs Natural Park
+			<div style="font-size:70%">This is absolutely a must when visiting San Diego. Make the time to drive here and watch the sun set over the ocean. The cliffs are awe inspiring alone, but add in the spray of the waves crashing and the colors changing from the sun. You won't forget it.</div>
 		</div>
-		<div class="box">place3
+		<div class="box">Point Loma
+			<div style="font-size:70%">West of downtown San Diego, you'll find Point Loma, Harbor Island and Shelter Island, all of which offer great restaurants, activities and attractions, a variety of accommodations and stunning views of San Diego’s skyline.</div>
 		</div>
 	</div>
 	<div class="banner">
 		Places to eat
 	</div>
 	<div class="container">
-		<div class="box">place1
+		<div class="box">Truluck's Ocean's Finest 
+			<div>Seafood &amp; Crab</div>
+			<div style="font-size:70%">8990 University Center Ln</div>
+			<div style="font-size:70%">American, Seafood, Vegetarian Friendly</div>
 		</div>
-		<div class="box">place2
+		<div class="box">Hodad's Downtown
+			<div style="font-size:70%">945 Broadway</div>
+			<div style="font-size:70%">American, Bar</div>
 		</div>
-		<div class="box">place3
+		<div class="box">Parma Cucina Italiana
+			<div style="font-size:70%">3850 5th Ave</div>
+			<div style="font-size:70%">Italian, Northern-Italian, Vegetarian Friendly</div>
 		</div>
 	</div>
 	
