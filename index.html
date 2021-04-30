@@ -8,6 +8,8 @@
     <!-- Bootstrap stylesheet and JavaScript -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <!-- Font awesome -->
@@ -53,29 +55,6 @@
             letter-spacing: 2px;
             font-family: "Poppins";
             text-transform: lowercase;
-        }
-
-     
-
-        /* Navigation bar */
-        .navbar {
-            padding: 0 0 1rem;
-        }
-
-        .navbar-brand {
-            font-family: "Poppins";
-            font-weight: bold;
-            font-size: 2rem;
-        }
-
-        .nav-item {
-            padding: 0 15px;
-        }
-
-        .nav-link {
-            font-family: "Poppins";
-            font-size: 1.25rem;
-            font-weight: 100;
         }
 
         #slideshow {
@@ -129,31 +108,32 @@
             transform: translateY(-30px);
         }
 
-#container{
-      margin-left:20px;
-      margin-right:20px;
-      margin-top: 30px;
-      position: relative;
-      padding: 10px;
-    }
+        #container {
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 30px;
+            position: relative;
+            padding: 10px;
+        }
 
-    .block {
+        .block {
             display: inline-block;
             width: auto;
             height: 230px;
             margin: 5px 15px 10px 15px;
             position: relative;
-            transition: all 1s; 
-    }
+            transition: all 1s;
+        }
+
         .middle {
-          transition: .5s ease;
-          opacity: 0;
-          width: 300px; 
-          position: absolute;
-          text-align: center;
-          display:flex;
-          top: 30%;
-          left: 7%;
+            transition: .5s ease;
+            opacity: 0;
+            width: 300px;
+            position: absolute;
+            text-align: center;
+            display: flex;
+            top: 30%;
+            left: 7%;
         }
 
 
@@ -174,45 +154,45 @@
         }
 
         .text {
-          width: 100%;
-          margin-left:10px;
-          padding-right:0px;
-          color: white !important;
-          font-size: 15px;
-          padding: 0px 0px;
-          letter-spacing: 0.5px;
-          text-align: center;
-          position: absolute;
-          font-family: "Poppins";
+            width: 100%;
+            margin-left: 10px;
+            padding-right: 0px;
+            color: white !important;
+            font-size: 15px;
+            padding: 0px 0px;
+            letter-spacing: 0.5px;
+            text-align: center;
+            position: absolute;
+            font-family: "Poppins";
         }
 
         .text a {
-          text-align:center;
-          color: #7B7B7B;
-          font-family: "Poppins";
+            text-align: center;
+            color: #7B7B7B;
+            font-family: "Poppins";
 
         }
 
         p {
             letter-spacing: 3px;
-          color: #000;
-          position: relative;
-          bottom: 15px;
-          font-size: 100%;
+            color: #000;
+            position: relative;
+            bottom: 15px;
+            font-size: 100%;
         }
 
-       
+
 
         .block:hover .middle {
-          opacity: 1;
+            opacity: 1;
         }
 
         .block:hover .text {
-          opacity: 1;
+            opacity: 1;
         }
 
         .block:hover .text a {
-          opacity: 1;
+            opacity: 1;
         }
 
         .block:hover .image {
@@ -228,14 +208,14 @@
         }
 
         .city {
-          font-size: 30px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color:white;
-          position: absolute;
-          bottom: -17px;
-          left: 20px;
-          font-family: "Poppins";
+            font-size: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
+            position: absolute;
+            bottom: -17px;
+            left: 20px;
+            font-family: "Poppins";
 
         }
 
@@ -261,18 +241,6 @@
             content: '<';
             font-size: 55px;
             color: #000000;
-        }
-
-        /* footer section */
-        #footer {
-            text-align: center;
-            font-family: "Poppins";
-            background-color: #aee6e6;
-            line-height: 2rem;
-        }
-
-        .footer-icon {
-            margin: 1%;
         }
 
         /* Containers */
@@ -364,20 +332,31 @@
     </script>
 
 
-    <h1>California  Road  Trip </h1>
+    <h1>California Road Trip </h1>
     <h2 class="slogan"> Plan your perfect west coast getaway </h2>
 
+<<<<<<< HEAD
 <section id="container">
     <div class="row">
         <div class="block">
             <img class="image" src="images/SF.jpg" alt="">
             <div class="middle">
+=======
+    <section id="container">
+        <div class="row">
+            <div class="block">
+                <img class="image" src="images/SF.jpg" alt=“”>
+                <div class="middle">
+>>>>>>> origin/main
 
-                <div class="text">
-                    <p>See the heart of the Golden State.</p>
-                    <a href="SanFrancisco.html"> Learn More </a>
+                    <div class="text">
+                        <p>See the heart of the Golden State.</p>
+                        <a href="SanFrancisco.html"> Learn More </a>
+                    </div>
                 </div>
+                <h3 class="city">San Francisco</h3>
             </div>
+<<<<<<< HEAD
             <h3 class="city">San Francisco</h3>
         </div>
         <div class="block">
@@ -387,12 +366,26 @@
                 <div class="text">
                     <p>Visit this energetic surf town.</p>
                     <a href="SantaCruz.html"> Learn More </a>
+=======
+            <div class="block">
+                <img class="image" src="images/santacruz.jpg" alt=“”>
+                <div class="middle">
+
+                    <div class="text">
+                        <p>Visit this energetic surf town.</p>
+                        <a href="SantaCruz.html"> Learn More </a>
+                    </div>
+>>>>>>> origin/main
                 </div>
+                <h3 class="city">Santa Cruz</h3>
+
             </div>
-            <h3 class="city">Santa Cruz</h3>
 
-        </div>
+            <div class="block">
+                <img class="image" src="images/SB.jpg" alt=“”>
+                <div class="middle">
 
+<<<<<<< HEAD
         <div class="block">
             <img class="image" src="images/SB.jpg" alt="santa barbara">
             <div class="middle">
@@ -400,17 +393,27 @@
                 <div class="text">
                     <p>The perfect pair: beach views and historic sites.</p>
                     <a href="SantaBarbara.html"> Learn More </a>
+=======
+                    <div class="text">
+                        <p>The perfect pair: beach views and historic sites.</p>
+                        <a href="SantaBarbara.html"> Learn More </a>
+                    </div>
+>>>>>>> origin/main
                 </div>
-            </div>
-            <h3 class="city">Santa Barbara</h3>
+                <h3 class="city">Santa Barbara</h3>
 
+            </div>
         </div>
-    </div>
-</section>  
+    </section>
 
     <div class="row">
+<<<<<<< HEAD
       <div class="block">
             <img class="image" src="images/LA.jpg" alt="LA">
+=======
+        <div class="block">
+            <img class="image" src="images/LA.jpg" alt=“”>
+>>>>>>> origin/main
             <div class="middle">
 
                 <div class="text">
@@ -480,9 +483,9 @@
 
     <footer id="footer">
         <div class="container-fluid">
-            <i class="footer-icon fab fa-facebook"></i>
-            <i class="footer-icon fab fa-instagram"></i>
-            <i class="footer-icon fas fa-envelope"></i>
+            <a href="https://www.facebook.com"><i class="footer-icon fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com"><i class="footer-icon fab fa-instagram"></i></a>
+            <a href="mailto:CaliforniaRoadTrip@gmail.com"><i class="footer-icon fas fa-envelope"></i></a>
             <p>© Copyright 2021 California Road Trip</p>
         </div>
     </footer>
