@@ -13,6 +13,24 @@
 
 <style>
 	/* Navigation bar */
+	p {
+          letter-spacing: 3px;
+          color: #000;
+          position: relative;
+          bottom: 15px;
+          font-size: 100%;
+        }
+	.city {
+          font-size: 30px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color:white;
+          position: absolute;
+          bottom: -17px;
+          left: 20px;
+
+        }
+	
         .navbar {
             padding: 0 0 1rem;
         }
@@ -98,17 +116,61 @@
 			padding: 10px;
 			grid-gap:2em;
 		}
+		.image {
+            border-radius: 6px;
+            width: auto;
+            height: 230px;
+            transition: all 1s;
+        }
 	
-		.box {
+
+		.block {
 			position:relative;
-			height: 200px;
-			background-color: #ffa45b;
+			height: 240px;
 			text-align: center;
 			color:#FFF;
 			border-radius: 5px;
 			padding-top: 10px;
 			font-size: 130%;
 		}
+	
+		.middle {
+          transition: .5s ease;
+          opacity: 0;
+          width: 300px; 
+          position: absolute;
+          text-align: center;
+          top: 15%;
+          left: 7%;
+        }
+	
+		.text {
+          width: 100%;
+          margin-left:10px;
+          padding-right:0px;
+          color: white !important;
+          font-size: 15px;
+          padding: 0px 0px;
+          letter-spacing: 0.5px;
+          text-align: center;
+          position: absolute;
+          font-family: "Poppins";
+        }
+	
+		.block:hover .middle {
+          opacity: 1;
+        }
+
+        .block:hover .text {
+          opacity: 1;
+        }
+
+      
+
+        .block:hover .image {
+            opacity: 0.2;
+            transform: scale(1.05);
+        }
 	
 		#hero {
 			font-size: 40px;
@@ -118,6 +180,7 @@
 			margin-top: 30px;
 			position: relative;
 			padding: 100px 20px 0px 20px;
+			/*background-color: #aee6e6;*/
 			height:300px;
 			background-image: url("sandiego.jpeg");
 			background-position: center;
@@ -145,6 +208,300 @@
 		}
 </style>
 <script>
+		function getInfo() {
+			getAQI();
+			getSun();
+			getWeather();
+		}
+	
+		function getWeather() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+			request2 = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+			// Step 2: Set the URL for the AJAX request to be the JSON file
+ 
+		request2.open("GET", "https://api.openweathermap.org/data/2.5/onecall?lat=34.052235&lon=-118.243683&exclude=hourly,daily&appid=6e477249e2b1e0f4d6461a66a1947eaa", true)
+
+			console.log("2 - opened request file");
+ 
+			// Step 3: set up event handler/callback
+
+			request2.onreadystatechange = function() {
+				 
+				if (request2.readyState == 4 && request2.status == 200) {
+
+					// Step 5: wait for done + success
+					console.log("5 - response received");
+					result = request2.responseText;
+					//alert(result);
+					//document.getElementById("temp").innerHTML = result;
+					weather = JSON.parse(result);
+					
+					document.getElementById("temp").innerHTML ="Temperature: " + weather["current"]["temp"] + "&deg;F";
+				
+				}
+				else if (request2.readyState == 4 && request2.status != 200) {
+
+					document.getElementById("temp").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request2.readyState == 3) {
+
+					document.getElementById("temp").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+		// Step 4: fire off the HTTP request
+			request2.send();
+			console.log("4 - Request sent");
+		}
+		function getSun() {
+			request1 = new XMLHttpRequest();
+			
+			console.log("1. request object created");
+ 			
+			//request json file from sunrise-sunset.org, fill in lat and lng for Somerville
+			request1.open("GET", "https://api.sunrise-sunset.org/json?lat=34.052235&lng=-118.243683", true)
+
+			console.log("2. opened request file");
+ 
+			request1.onreadystatechange = function() {
+				 
+				if (request1.readyState == 4 && request1.status == 200) {
+					console.log("5. response received");
+					result = request1.responseText;
+					//document.getElementById("data").innerHTML = result;
+					sun = JSON.parse(result);
+					
+					//displays sunrise time:
+					document.getElementById("sr").innerHTML ="Sunrise: " + sun["results"]["sunrise"]; 
+					
+					//displays sunset time:
+					document.getElementById("ss").innerHTML ="Sunset: " + sun["results"]["sunset"]; 
+					
+					//displays current day length
+					document.getElementById("dayl").innerHTML ="Day length: " + sun["results"]["day_length"]; 
+			
+				}
+				else if (request1.readyState == 4 && request1.status != 200) {
+					document.getElementById("sr").innerHTML = "Something went wrong!";
+				}
+
+				else if (request1.readyState == 3) {
+					document.getElementById("sr").innerHTML = "Too soon! Try again";
+				}
+
+			}
+
+			request1.send();
+			console.log("4. request sent");
+		}
+	
+	    function getAQI() {
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+
+
+            request.open("GET", "http://api.openweathermap.org/data/2.5/air_pollution?lat=34.052235&lon=-118.2436836&appid=9eb8bd1cc3e0712eec15fc85f42632dd", true);
+            console.log("2 - opened request file");
+ 
+            request.onreadystatechange = function() {
+                 
+                if (request.readyState == 4 && request.status == 200) {
+
+    
+                    console.log("5 - response received");
+                    result = request.responseText;
+                
+                    var pollution = JSON.parse(result);
+                    var aqi = pollution["list"][0]["main"]["aqi"];
+                    var description = "";
+                
+                    if (aqi == 1) {
+                        description = "Good";
+                    } else if (aqi == 2) {
+                        description = "Fair";
+                    } else if (aqi == 3) {
+                        description = "Moderate";
+                    } else if (aqi == 4) {
+                        description = "Poor";
+                    } else {
+                        description = "Very Poor";
+                    }
+
+                    document.getElementById("info").innerHTML = "Current AQI: " + aqi + " (" + description + ")"; 
+                   
+        
+                }
+                else if (request.readyState == 4 && request.status != 200) {
+
+                    document.getElementById("info").innerHTML = "Error";
+
+                }
+
+                else if (request.readyState == 3) {
+
+                    document.getElementById("info").innerHTML = "Too soon!  Try again";
+
+                }
+
+            }
+
+            request.send();
+            console.log("4 - Request sent");
+        }
+	</script><script>
+		function getInfo() {
+			getAQI();
+			getSun();
+			getWeather();
+		}
+	
+		function getWeather() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+			request2 = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+			// Step 2: Set the URL for the AJAX request to be the JSON file
+ 
+		request2.open("GET", "https://api.openweathermap.org/data/2.5/onecall?lat=34.052235&lon=-118.243683&exclude=hourly,daily&appid=6e477249e2b1e0f4d6461a66a1947eaa", true)
+
+			console.log("2 - opened request file");
+ 
+			// Step 3: set up event handler/callback
+
+			request2.onreadystatechange = function() {
+				 
+				if (request2.readyState == 4 && request2.status == 200) {
+
+					// Step 5: wait for done + success
+					console.log("5 - response received");
+					result = request2.responseText;
+					//alert(result);
+					//document.getElementById("temp").innerHTML = result;
+					weather = JSON.parse(result);
+					
+					document.getElementById("temp").innerHTML ="Temperature: " + weather["current"]["temp"] + "&deg;F";
+				
+				}
+				else if (request2.readyState == 4 && request2.status != 200) {
+
+					document.getElementById("temp").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request2.readyState == 3) {
+
+					document.getElementById("temp").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+		// Step 4: fire off the HTTP request
+			request2.send();
+			console.log("4 - Request sent");
+		}
+		function getSun() {
+			request1 = new XMLHttpRequest();
+			
+			console.log("1. request object created");
+ 			
+			//request json file from sunrise-sunset.org, fill in lat and lng for Somerville
+			request1.open("GET", "https://api.sunrise-sunset.org/json?lat=34.052235&lng=-118.243683", true)
+
+			console.log("2. opened request file");
+ 
+			request1.onreadystatechange = function() {
+				 
+				if (request1.readyState == 4 && request1.status == 200) {
+					console.log("5. response received");
+					result = request1.responseText;
+					//document.getElementById("data").innerHTML = result;
+					sun = JSON.parse(result);
+					
+					//displays sunrise time:
+					document.getElementById("sr").innerHTML ="Sunrise: " + sun["results"]["sunrise"]; 
+					
+					//displays sunset time:
+					document.getElementById("ss").innerHTML ="Sunset: " + sun["results"]["sunset"]; 
+					
+					//displays current day length
+					document.getElementById("dayl").innerHTML ="Day length: " + sun["results"]["day_length"]; 
+			
+				}
+				else if (request1.readyState == 4 && request1.status != 200) {
+					document.getElementById("sr").innerHTML = "Something went wrong!";
+				}
+
+				else if (request1.readyState == 3) {
+					document.getElementById("sr").innerHTML = "Too soon! Try again";
+				}
+
+			}
+
+			request1.send();
+			console.log("4. request sent");
+		}
+	
+	    function getAQI() {
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+
+
+            request.open("GET", "http://api.openweathermap.org/data/2.5/air_pollution?lat=34.052235&lon=-118.2436836&appid=9eb8bd1cc3e0712eec15fc85f42632dd", true);
+            console.log("2 - opened request file");
+ 
+            request.onreadystatechange = function() {
+                 
+                if (request.readyState == 4 && request.status == 200) {
+
+    
+                    console.log("5 - response received");
+                    result = request.responseText;
+                
+                    var pollution = JSON.parse(result);
+                    var aqi = pollution["list"][0]["main"]["aqi"];
+                    var description = "";
+                
+                    if (aqi == 1) {
+                        description = "Good";
+                    } else if (aqi == 2) {
+                        description = "Fair";
+                    } else if (aqi == 3) {
+                        description = "Moderate";
+                    } else if (aqi == 4) {
+                        description = "Poor";
+                    } else {
+                        description = "Very Poor";
+                    }
+
+                    document.getElementById("info").innerHTML = "Current AQI: " + aqi + " (" + description + ")"; 
+                   
+        
+                }
+                else if (request.readyState == 4 && request.status != 200) {
+
+                    document.getElementById("info").innerHTML = "Error";
+
+                }
+
+                else if (request.readyState == 3) {
+
+                    document.getElementById("info").innerHTML = "Too soon!  Try again";
+
+                }
+
+            }
+
+            request.send();
+            console.log("4 - Request sent");
+        }
+	</script><script>
 		function getInfo() {
 			getAQI();
 			getSun();
@@ -331,7 +688,7 @@
 	<div id = "hero">
 		Los Angeles
 		<form>
-			<input type="button" class="btn" value="Save" />
+			<input type="button" class="btn" name = "btn" value="Save" />
 		</form>
 		
 	</div>
@@ -340,30 +697,100 @@
 		Places to visit
 	</div>
 	<div class="container">
-		<div class="box">place1
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place2
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place3
-			<div style="font-size:90%">description</div>
-		</div>
-	</div>
+		<div class="block">
+				<img class="image" src="images/grif.jpg" alt="Griffith Park">
+				<div class="middle">
+
+					<div class="text">
+						<p>West of downtown San Diego, you'll find Point Loma, Harbor Island and Shelter Island, all of which offer great restaurants, activities and attractions, a variety of accommodations and stunning views of San Diego’s skyline.</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Griffith Park</h3>
+			</div>
+			<div class="block">
+				<img class="image" src="images/uni.jpg" alt="Universal Studios Hollywood">
+				<div class="middle">
+
+					<div class="text">
+						<p>This is absolutely a must when visiting San Diego. Make the time to drive here and watch the sun set over the ocean. The cliffs are awe inspiring alone, but add in the spray of the waves crashing and the colors changing from the sun. You won't forget it.</p>
+					</div>
+				</div>
+				<h3 class="city">Universal Studios Hollywood</h3>
+
+			</div>
+			<div class="block">
+				<img class="image" src="images/holi.jpg" alt="Hollywood Sign">
+				<div class="middle">
+
+					<div class="text">
+						<p>A once-in-a-lifetime opportunity to explore a historic aircraft carrier.  Activities for all ages including self-guided audio tours, theater, flight simulators, climb-in aircraft, ejection seats and cockpits, guided tours of the bridge and more.</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Hollywood Sign</h3>
+			</div>
+		
+		
+	</div>	
+
 	<div class="banner">
 		Places to eat
 	</div>
 	<div class="container">
-		<div class="box">place1
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place2
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place3
-			<div style="font-size:90%">description</div>
-		</div>
+			<div class="block">
+				<img class="image" src="images/seafood.jpg" alt="Angelini Osteria">
+				<div class="middle">
+
+					<div class="text">
+						<p>Seafood &amp; Crab<br/>
+							8990 University Center Ln
+							
+						</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Angelini Osteria</h3>
+			</div>
+			<div class="block">
+				<img class="image" src="images/hod.jpg" alt="Cafe Gratitude">
+				<div class="middle">
+
+					<div class="text">
+						<p>American, Bar<br/>
+							945 Broadway
+						</p>
+					</div>
+				</div>
+				<h3 class="city">Cafe Gratitude</h3>
+
+			</div>
+			<div class="block">
+				<img class="image" src="images/ita.jpg" alt="Foxy’s Restaurant">
+				<div class="middle">
+
+					<div class="text">
+						<p>Italian, Northern-Italian, Vegetarian Friendly<br/>
+							3850 5th Ave</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Foxy’s Restaurant</h3>
+			</div>
 	</div>
+		<!--<div class="box">Truluck's Ocean's Finest 
+			<div>Seafood &amp; Crab</div>
+			<div style="font-size:70%">8990 University Center Ln</div>
+			<div style="font-size:70%">American, Seafood, Vegetarian Friendly</div>
+		</div>
+		<div class="box">Hodad's Downtown
+			<div style="font-size:70%">945 Broadway</div>
+			<div style="font-size:70%">American, Bar</div>
+		</div>
+		<div class="box">Parma Cucina Italiana
+			<div style="font-size:70%">3850 5th Ave</div>
+			<div style="font-size:70%">Italian, Northern-Italian, Vegetarian Friendly</div>
+		</div>-->
 	
 	<div id="wrapper">
 		<div class = "info" id = "temp">Loading...</div>
@@ -385,4 +812,3 @@
 	
 </body>
 </html>
-

@@ -13,6 +13,24 @@
 
 <style>
 	/* Navigation bar */
+	p {
+          letter-spacing: 3px;
+          color: #000;
+          position: relative;
+          bottom: 15px;
+          font-size: 100%;
+        }
+	.city {
+          font-size: 30px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color:white;
+          position: absolute;
+          bottom: -17px;
+          left: 20px;
+
+        }
+	
         .navbar {
             padding: 0 0 1rem;
         }
@@ -98,17 +116,61 @@
 			padding: 10px;
 			grid-gap:2em;
 		}
+		.image {
+            border-radius: 6px;
+            width: auto;
+            height: 230px;
+            transition: all 1s;
+        }
 	
-		.box {
+
+		.block {
 			position:relative;
-			height: 200px;
-			background-color: #ffa45b;
+			height: 240px;
 			text-align: center;
 			color:#FFF;
 			border-radius: 5px;
 			padding-top: 10px;
 			font-size: 130%;
 		}
+	
+		.middle {
+          transition: .5s ease;
+          opacity: 0;
+          width: 300px; 
+          position: absolute;
+          text-align: center;
+          top: 15%;
+          left: 7%;
+        }
+	
+		.text {
+          width: 100%;
+          margin-left:10px;
+          padding-right:0px;
+          color: white !important;
+          font-size: 15px;
+          padding: 0px 0px;
+          letter-spacing: 0.5px;
+          text-align: center;
+          position: absolute;
+          font-family: "Poppins";
+        }
+	
+		.block:hover .middle {
+          opacity: 1;
+        }
+
+        .block:hover .text {
+          opacity: 1;
+        }
+
+      
+
+        .block:hover .image {
+            opacity: 0.2;
+            transform: scale(1.05);
+        }
 	
 		#hero {
 			font-size: 40px;
@@ -118,8 +180,9 @@
 			margin-top: 30px;
 			position: relative;
 			padding: 100px 20px 0px 20px;
+			/*background-color: #aee6e6;*/
 			height:300px;
-			background-image: url("sandiego.jpeg");
+			background-image: url("images/napa.jpg");
 			background-position: center;
 			background-size: cover;
 			
@@ -331,7 +394,7 @@
 	<div id = "hero">
 		Napa
 		<form>
-			<input type="button" class="btn" value="Save" />
+			<input type="button" class="btn" name = "btn" value="Save" />
 		</form>
 		
 	</div>
@@ -340,30 +403,100 @@
 		Places to visit
 	</div>
 	<div class="container">
-		<div class="box">place1
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place2
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place3
-			<div style="font-size:90%">description</div>
-		</div>
-	</div>
+		<div class="block">
+				<img class="image" src="images/market.jpg" alt="Oxbow public market">
+				<div class="middle">
+
+					<div class="text">
+						<p>West of downtown San Diego, you'll find Point Loma, Harbor Island and Shelter Island, all of which offer great restaurants, activities and attractions, a variety of accommodations and stunning views of San Diego’s skyline.</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Oxbow public market</h3>
+			</div>
+			<div class="block">
+				<img class="image" src="images/wine.jpg" alt="Buena Vista Winery">
+				<div class="middle">
+
+					<div class="text">
+						<p>This is absolutely a must when visiting San Diego. Make the time to drive here and watch the sun set over the ocean. The cliffs are awe inspiring alone, but add in the spray of the waves crashing and the colors changing from the sun. You won't forget it.</p>
+					</div>
+				</div>
+				<h3 class="city">Buena Vista Winery</h3>
+
+			</div>
+			<div class="block">
+				<img class="image" src="images/car.jpg" alt="Domaine Carneros">
+				<div class="middle">
+
+					<div class="text">
+						<p>A once-in-a-lifetime opportunity to explore a historic aircraft carrier.  Activities for all ages including self-guided audio tours, theater, flight simulators, climb-in aircraft, ejection seats and cockpits, guided tours of the bridge and more.</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Domaine Carneros</h3>
+			</div>
+		
+		
+	</div>	
+
 	<div class="banner">
 		Places to eat
 	</div>
 	<div class="container">
-		<div class="box">place1
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place2
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place3
-			<div style="font-size:90%">description</div>
-		</div>
+			<div class="block">
+				<img class="image" src="images/seafood.jpg" alt="The Pickled Pig">
+				<div class="middle">
+
+					<div class="text">
+						<p>Seafood &amp; Crab<br/>
+							8990 University Center Ln
+							
+						</p>
+						
+					</div>
+				</div>
+				<h3 class="city">The Pickled Pig</h3>
+			</div>
+			<div class="block">
+				<img class="image" src="images/hod.jpg" alt="The Model Bakery">
+				<div class="middle">
+
+					<div class="text">
+						<p>American, Bar<br/>
+							945 Broadway
+						</p>
+					</div>
+				</div>
+				<h3 class="city">The Model Bakery</h3>
+
+			</div>
+			<div class="block">
+				<img class="image" src="images/ita.jpg" alt="Buster's Original Southern BBQ">
+				<div class="middle">
+
+					<div class="text">
+						<p>Italian, Northern-Italian, Vegetarian Friendly<br/>
+							3850 5th Ave</p>
+						
+					</div>
+				</div>
+				<h3 class="city">Buster's Original Southern BBQ</h3>
+			</div>
 	</div>
+		<!--<div class="box">Truluck's Ocean's Finest 
+			<div>Seafood &amp; Crab</div>
+			<div style="font-size:70%">8990 University Center Ln</div>
+			<div style="font-size:70%">American, Seafood, Vegetarian Friendly</div>
+		</div>
+		<div class="box">Hodad's Downtown
+			<div style="font-size:70%">945 Broadway</div>
+			<div style="font-size:70%">American, Bar</div>
+		</div>
+		<div class="box">Parma Cucina Italiana
+			<div style="font-size:70%">3850 5th Ave</div>
+			<div style="font-size:70%">Italian, Northern-Italian, Vegetarian Friendly</div>
+		</div>-->
 	
 	<div id="wrapper">
 		<div class = "info" id = "temp">Loading...</div>
@@ -385,4 +518,8 @@
 	
 </body>
 </html>
+
+
+
+
 
