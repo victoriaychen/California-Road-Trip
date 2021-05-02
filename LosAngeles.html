@@ -211,7 +211,10 @@
 					//document.getElementById("temp").innerHTML = result;
 					weather = JSON.parse(result);
 
-					document.getElementById("temp").innerHTML ="Temperature: " + weather["current"]["temp"] + "&deg;F";
+					temp = weather["current"]["temp"];
+					temp = (temp - 273.15) * 9/5 + 32;
+					temp = temp.toFixed(2);
+					document.getElementById("temp").innerHTML ="Temperature: " + temp + "&deg;F";
 
 				}
 				else if (request2.readyState == 4 && request2.status != 200) {
