@@ -7,14 +7,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <!-- external stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <!-- Font awesome -->
     <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
 
 <style>
-	 /* Containers */
+	p {
+          letter-spacing: 3px;
+          color: #000;
+          position: relative;
+          bottom: 15px;
+          font-size: 100%;
+        }
+	.city {
+          font-size: 130%;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color:white;
+          position: absolute;
+          bottom: -17px;
+          left: 30px;
+
+        }
+	/* Containers */
         .container-fluid {
             padding: 7% 10%;
         }
@@ -73,17 +90,61 @@
 			padding: 10px;
 			grid-gap:2em;
 		}
+		.image {
+            border-radius: 6px;
+            width: auto;
+            height: 230px;
+            transition: all 1s;
+        }
 
-		.box {
+
+		.block {
 			position:relative;
-			height: 200px;
-			background-color: #ffa45b;
+			height: 240px;
 			text-align: center;
 			color:#FFF;
 			border-radius: 5px;
 			padding-top: 10px;
 			font-size: 130%;
 		}
+
+		.middle {
+          transition: .5s ease;
+          opacity: 0;
+          width: 300px;
+          position: absolute;
+          text-align: center;
+          top: 15%;
+          left: 7%;
+        }
+
+		.text {
+          width: 100%;
+          margin-left:10px;
+          padding-right:0px;
+          color: white !important;
+          font-size: 15px;
+          padding: 0px 0px;
+          letter-spacing: 0.5px;
+          text-align: center;
+          position: absolute;
+          font-family: "Poppins";
+        }
+
+		.block:hover .middle {
+          opacity: 1;
+        }
+
+        .block:hover .text {
+          opacity: 1;
+        }
+
+
+
+        .block:hover .image {
+            opacity: 0.2;
+            transform: scale(1.05);
+        }
 
 		#hero {
 			font-size: 40px;
@@ -93,8 +154,9 @@
 			margin-top: 30px;
 			position: relative;
 			padding: 100px 20px 0px 20px;
+			/*background-color: #aee6e6;*/
 			height:300px;
-			background-image: url("sandiego.jpeg");
+			background-image: url("images/sc.jpg");
 			background-position: center;
 			background-size: cover;
 
@@ -269,6 +331,7 @@
 	</script>
 </head>
 
+
 <body onload="getInfo()">
 	<!-- Bootstrap Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -306,7 +369,7 @@
 	<div id = "hero">
 		Santa Cruz
 		<form>
-			<input type="button" class="btn" value="Save" />
+			<input type="button" class="btn" name = "btn" value="Save" />
 		</form>
 
 	</div>
@@ -315,29 +378,86 @@
 		Places to visit
 	</div>
 	<div class="container">
-		<div class="box">place1
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place2
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place3
-			<div style="font-size:90%">description</div>
-		</div>
+		<div class="block">
+				<img class="image" src="images/bea.jpg" alt="Santa Cruz Beach Boardwalk">
+				<div class="middle">
+
+					<div class="text">
+						<p>Amusement park offers a variety of games & rides right on a mile-long stretch of sandy beach.</p>
+
+					</div>
+				</div>
+				<h3 class="city">Santa Cruz Beach Boardwalk</h3>
+			</div>
+			<div class="block">
+				<img class="image" src="images/r4.jpg" alt="Mystery Spot">
+				<div class="middle">
+
+					<div class="text">
+						<p>The Mystery Spot is a tourist attraction near Santa Cruz, California, opened in 1939 by George Prather. Visitors experience demonstrations that appear to defy gravity, on the short but steep uphill walk and inside a wooden building on the site.</p>
+					</div>
+				</div>
+				<h3 class="city">Mystery Spot</h3>
+
+			</div>
+			<div class="block">
+				<img class="image" src="images/sbb.jpg" alt="Natural Bridges State Beach">
+				<div class="middle">
+
+					<div class="text">
+						<p>Natural Bridges State Beach is a 65-acre California state park in Santa Cruz, California, in the United States. The park features a natural bridge across a section of the beach. It is also well known as a hotspot to see monarch butterfly migrations.</p>
+
+					</div>
+				</div>
+				<h3 class="city">Natural Bridges State Beach</h3>
+			</div>
+
+
 	</div>
+
 	<div class="banner">
 		Places to eat
 	</div>
 	<div class="container">
-		<div class="box">place1
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place2
-			<div style="font-size:90%">description</div>
-		</div>
-		<div class="box">place3
-			<div style="font-size:90%">description</div>
-		</div>
+			<div class="block">
+				<img class="image" src="images/r1.jpg" alt="Linda’s Seabreeze Cafe">
+				<div class="middle">
+
+					<div class="text">
+						<p>Seafood &amp; Crab<br/>
+							8990 University Center Ln
+
+						</p>
+
+					</div>
+				</div>
+				<h3 class="city">Linda’s Seabreeze Cafe</h3>
+			</div>
+			<div class="block">
+				<img class="image" src="images/r2.jpg" alt="Marianne’s Ice Cream">
+				<div class="middle">
+
+					<div class="text">
+						<p>American, Bar<br/>
+							945 Broadway
+						</p>
+					</div>
+				</div>
+				<h3 class="city">Marianne’s Ice Cream</h3>
+
+			</div>
+			<div class="block">
+				<img class="image" src="images/r3.jpg" alt="West End Tap & Kitchen">
+				<div class="middle">
+
+					<div class="text">
+						<p>Italian, Northern-Italian, Vegetarian Friendly<br/>
+							3850 5th Ave</p>
+
+					</div>
+				</div>
+				<h3 class="city">West End Tap &amp; Kitchen</h3>
+			</div>
 	</div>
 
 	<div id="wrapper">
@@ -356,5 +476,6 @@
             <p>© Copyright 2021 California Road Trip</p>
         </div>
     </footer>
+
 </body>
 </html>
