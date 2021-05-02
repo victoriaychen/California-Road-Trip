@@ -36,20 +36,17 @@
             padding: 7% 10%;
         }
 
-	@media screen and (min-width: 350px){
+	@media screen and (min-width: 800px){
 			.container{
 			grid-template-columns: repeat(2, 1fr);
 			}
-			/*.box{
-				height:
-			}*/
 	}
 	@media screen and (min-width: 600px){
 			#wrapper{
 			grid-template-columns: repeat(2, 1fr);
 			}
 	}
-	@media screen and (min-width: 800px){
+	@media screen and (min-width: 1200px){
 			.container{
 			grid-template-columns: repeat(3, 1fr);
 			}
@@ -213,7 +210,10 @@
 					//document.getElementById("temp").innerHTML = result;
 					weather = JSON.parse(result);
 
-					document.getElementById("temp").innerHTML ="Temperature: " + weather["current"]["temp"] + "&deg;F";
+					temp = weather["current"]["temp"];
+					temp = (temp - 273.15) * 9/5 + 32;
+					temp = temp.toFixed(2);
+					document.getElementById("temp").innerHTML ="Temperature: " + temp + "&deg;F";
 
 				}
 				else if (request2.readyState == 4 && request2.status != 200) {
@@ -420,7 +420,7 @@
 	</div>
 	<div class="container">
 			<div class="block">
-				<img class="image" src="images/seafood.jpg" alt="Truluck's Ocean's Finest">
+				<img class="image" src="images/r8.jpg" alt="Truluck's Ocean's Finest">
 				<div class="middle">
 
 					<div class="text">
@@ -434,7 +434,7 @@
 				<h3 class="city">East Beach Tacos</h3>
 			</div>
 			<div class="block">
-				<img class="image" src="images/hod.jpg" alt="Hodad's Downtown">
+				<img class="image" src="images/r9.jpg" alt="Hodad's Downtown">
 				<div class="middle">
 
 					<div class="text">
@@ -447,7 +447,7 @@
 
 			</div>
 			<div class="block">
-				<img class="image" src="images/ita.jpg" alt="Parma Cucina Italiana">
+				<img class="image" src="images/r10.jpg" alt="Parma Cucina Italiana">
 				<div class="middle">
 
 					<div class="text">
