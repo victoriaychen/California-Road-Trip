@@ -233,6 +233,74 @@
 			request2.send();
 			console.log("4 - Request sent");
 		}
+	
+		// convert UTC to PST
+		function formatTime(raw) {
+			raw_int = parseInt(raw); 
+			var pst = 0;
+			if (raw_int < 7) {
+				pst = raw_int + 5; 
+
+			} else {
+				pst = raw_int - 7;
+			}
+
+			return pst;
+
+		}
+
+
+		// returns the minutes and seconds values for the times
+		function getMinutes(raw){
+			raw_int = parseInt(raw);
+			var length = 0;
+			var start = 0;
+
+			// the hour is two digits
+			if (raw_int > 9) {
+				length = 8;
+				start = 2;
+			}
+
+			// the hour is one digit
+			if (raw_int < 10) {
+				length = 7;
+				start = 1;
+
+			}
+			var count = 0;
+			var minutes = "";
+			for (var i = start; i < length; i++) {
+				minutes = minutes.concat(raw[i]);
+			}
+
+			return minutes;
+		}
+
+
+
+		// determine whether the AM or PM value changes or not
+		function AMorPM(raw) {
+			raw_int = parseInt(raw);
+			var day_time = "";
+
+			// am or pm is different 
+			if (raw_int == 12 || (raw_int >= 1 && raw_int < 7)) {
+				if (raw[raw.length-2] == "P") {
+					day_time = day_time.concat("A");
+				} else {
+					day_time = day_time.concat("P");
+				}
+				day_time = day_time.concat(raw[raw.length-1]);
+			} 
+			// am or pm is the same 
+			if (raw_int >= 7 && raw_int < 12) {
+				day_time = day_time.concat(raw[raw.length-2]);
+				day_time = day_time.concat(raw[raw.length-1]);
+			}
+			return day_time;
+		}
+	
 		function getSun() {
 			request1 = new XMLHttpRequest();
 
@@ -250,12 +318,21 @@
 					result = request1.responseText;
 					//document.getElementById("data").innerHTML = result;
 					sun = JSON.parse(result);
+					var raw_sunrise = sun["results"]["sunrise"];
+					var raw_sunset = sun["results"]["sunset"];
+					sunrise = formatTime(raw_sunrise);
+					sunset = formatTime(raw_sunset);
+
+					var sunrise_minutes = getMinutes(raw_sunrise);
+					var sunset_minutes = getMinutes(raw_sunset);
+					var sunrise_daytime = AMorPM(raw_sunrise);
+					var sunset_daytime = AMorPM(raw_sunset);
 
 					//displays sunrise time:
-					document.getElementById("sr").innerHTML ="Sunrise: " + sun["results"]["sunrise"];
+					document.getElementById("sr").innerHTML ="Sunrise: " + sunrise + sunrise_minutes + "  " + sunrise_daytime;
 
 					//displays sunset time:
-					document.getElementById("ss").innerHTML ="Sunset: " + sun["results"]["sunset"];
+					document.getElementById("ss").innerHTML ="Sunset: " +  sunset + sunset_minutes + "  " + sunset_daytime;
 
 					//displays current day length
 					document.getElementById("dayl").innerHTML ="Day length: " + sun["results"]["day_length"];
@@ -405,7 +482,7 @@
 				<div class="middle">
 
 					<div class="text">
-						<p>A nonprofit organization, SFMOMA holds an internationally recognized collection of modern and contemporary art, and was the first museum on the West Coast devoted solely to 20th-century art.</p>
+						<p>A nonprofit organization, SFMOMA holds an internationally recognized collection of modern and contemporary art.</p>
 
 					</div>
 				</div>
