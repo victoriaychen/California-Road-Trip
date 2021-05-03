@@ -37,17 +37,20 @@
         }
 
 
-	@media screen and (min-width: 800px){
+	@media screen and (min-width: 350px){
 			.container{
 			grid-template-columns: repeat(2, 1fr);
 			}
+			/*.box{
+				height:
+			}*/
 	}
 	@media screen and (min-width: 600px){
 			#wrapper{
 			grid-template-columns: repeat(2, 1fr);
 			}
 	}
-	@media screen and (min-width: 1200px){
+	@media screen and (min-width: 800px){
 			.container{
 			grid-template-columns: repeat(3, 1fr);
 			}
@@ -114,7 +117,6 @@
           text-align: center;
           top: 15%;
           left: 7%;
-		display: grid;
         }
 
 		.text {
@@ -212,10 +214,7 @@
 					//document.getElementById("temp").innerHTML = result;
 					weather = JSON.parse(result);
 
-					temp = weather["current"]["temp"];
-					temp = (temp - 273.15) * 9/5 + 32;
-					temp = temp.toFixed(2);
-					document.getElementById("temp").innerHTML ="Temperature: " + temp + "&deg;F";
+					document.getElementById("temp").innerHTML ="Temperature: " + weather["current"]["temp"] + "&deg;F";
 
 				}
 				else if (request2.readyState == 4 && request2.status != 200) {
@@ -235,6 +234,75 @@
 			request2.send();
 			console.log("4 - Request sent");
 		}
+
+		// convert UTC to PST
+		function formatTime(raw) {
+			raw_int = parseInt(raw); 
+			var pst = 0;
+			if (raw_int < 7) {
+				pst = raw_int + 5; 
+
+			} else {
+				pst = raw_int - 7;
+			}
+
+			return pst;
+
+		}
+
+
+		// returns the minutes and seconds values for the times
+		function getMinutes(raw){
+			raw_int = parseInt(raw);
+			var length = 0;
+			var start = 0;
+
+			// the hour is two digits
+			if (raw_int > 9) {
+				length = 8;
+				start = 2;
+			}
+
+			// the hour is one digit
+			if (raw_int < 10) {
+				length = 7;
+				start = 1;
+
+			}
+			var count = 0;
+			var minutes = "";
+			for (var i = start; i < length; i++) {
+				minutes = minutes.concat(raw[i]);
+			}
+
+			return minutes;
+		}
+
+
+
+		// determine whether the AM or PM value changes or not
+		function AMorPM(raw) {
+			raw_int = parseInt(raw);
+			var day_time = "";
+
+			// am or pm is different 
+			if (raw_int == 12 || (raw_int >= 1 && raw_int < 7)) {
+				if (raw[raw.length-2] == "P") {
+					day_time = day_time.concat("A");
+				} else {
+					day_time = day_time.concat("P");
+				}
+				day_time = day_time.concat(raw[raw.length-1]);
+			} 
+			// am or pm is the same 
+			if (raw_int >= 7 && raw_int < 12) {
+				day_time = day_time.concat(raw[raw.length-2]);
+				day_time = day_time.concat(raw[raw.length-1]);
+			}
+			return day_time;
+		}
+
+
 		function getSun() {
 			request1 = new XMLHttpRequest();
 
@@ -252,12 +320,21 @@
 					result = request1.responseText;
 					//document.getElementById("data").innerHTML = result;
 					sun = JSON.parse(result);
+					var raw_sunrise = sun["results"]["sunrise"];
+					var raw_sunset = sun["results"]["sunset"];
+					sunrise = formatTime(raw_sunrise);
+					sunset = formatTime(raw_sunset);
+
+					var sunrise_minutes = getMinutes(raw_sunrise);
+					var sunset_minutes = getMinutes(raw_sunset);
+					var sunrise_daytime = AMorPM(raw_sunrise);
+					var sunset_daytime = AMorPM(raw_sunset);
 
 					//displays sunrise time:
-					document.getElementById("sr").innerHTML ="Sunrise: " + sun["results"]["sunrise"];
+					document.getElementById("sr").innerHTML ="Sunrise: " + sunrise + sunrise_minutes + "  " + sunrise_daytime;
 
 					//displays sunset time:
-					document.getElementById("ss").innerHTML ="Sunset: " + sun["results"]["sunset"];
+					document.getElementById("ss").innerHTML ="Sunset: " +  sunset + sunset_minutes + "  " + sunset_daytime;
 
 					//displays current day length
 					document.getElementById("dayl").innerHTML ="Day length: " + sun["results"]["day_length"];
@@ -384,18 +461,20 @@
 				<div class="middle">
 
 					<div class="text">
-						<p>West of downtown San Diego, you'll find Point Loma, Harbor Island and Shelter Island, all of which offer great restaurants, activities and attractions, a variety of accommodations and stunning views of San Diego’s skyline.</p>
+						<p>West of downtown San Diego, is Point Loma, Harbor Island and Shelter Island, all of which offer restaurants, activities and attractions, a variety of accommodations and stunning views of San Diego’s skyline.</p>
 
 					</div>
 				</div>
 				<h3 class="city">Point Loma</h3>
+				
 			</div>
+
 			<div class="block">
 				<img class="image" src="images/sunsetcliff.jpg" alt="sunset cliff park">
 				<div class="middle">
 
 					<div class="text">
-						<p>This is absolutely a must when visiting San Diego. Make the time to drive here and watch the sun set over the ocean. The cliffs are awe inspiring alone, but add in the spray of the waves crashing and the colors changing from the sun. You won't forget it.</p>
+						<p>This is a must when visiting San Diego. Make time to drive here and watch the sun set. The cliffs are awe inspiring alone, but add in the ocean spray and you won't forget it.</p>
 					</div>
 				</div>
 				<h3 class="city">Sunset Cliffs Natural Park</h3>
@@ -406,7 +485,7 @@
 				<div class="middle">
 
 					<div class="text">
-						<p>A once-in-a-lifetime opportunity to explore a historic aircraft carrier.  Activities for all ages including self-guided audio tours, theater, flight simulators, climb-in aircraft, ejection seats and cockpits, guided tours of the bridge and more.</p>
+						<p>A once-in-a-lifetime opportunity to explore a historic aircraft carrier. Activities include tours, flight simulators, climb-in aircraft, ejection seats and cockpits, and more.</p>
 
 					</div>
 				</div>
@@ -415,6 +494,8 @@
 
 
 	</div>
+
+
 
 	<div class="banner">
 		Places to eat
@@ -425,7 +506,7 @@
 				<div class="middle">
 
 					<div class="text">
-						<p>Seafood &amp; Crab<br/>
+						<p>Truluck's Ocean's Finest<br/>
 							8990 University Center Ln
 
 						</p>
@@ -439,7 +520,7 @@
 				<div class="middle">
 
 					<div class="text">
-						<p>American, Bar<br/>
+						<p>Hodad's Downtown<br/>
 							945 Broadway
 						</p>
 					</div>
@@ -452,7 +533,7 @@
 				<div class="middle">
 
 					<div class="text">
-						<p>Italian, Northern-Italian, Vegetarian Friendly<br/>
+						<p>Parma Cucina Italiana<br/>
 							3850 5th Ave</p>
 
 					</div>
