@@ -12,7 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <!-- Font awesome -->
     <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
-
+ <script language="javascript">
+        saved_cities = [];          // set up array
+    </script>
 <style>
 	#hero {
 		background-image: url("images/a.jpg");
@@ -280,18 +282,62 @@
             </div>
         </div>
     </nav>
+		<?php
+				//establish connection info
+				$server = "sql309.epizy.com";
+				$userid = "epiz_27886961";
+				$pw = "eqoCc6gwr6t";
+				$db= "epiz_27886961_yourTrip";
 
+				// Create connection
+				$conn = new mysqli($server, $userid, $pw);
+
+				// Check connection
+				if ($conn->connect_error) {
+				  die("Connection failed: " . $conn->connect_error);
+				}
+
+				//select the database
+				$conn->select_db($db);
+
+				//run a query
+				$sql = "SELECT city FROM yourTrip WHERE saved = 1";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+					while ($row = $result->fetch_assoc()){
+						$city = $row["city"];
+						echo "<script language='javascript'>saved_cities.push('$city')</script>";
+					}
+				} 
+				//close the connection  
+				$conn->close();
+			?>
 	<div id = "hero">
 		Los Angeles
 		<form method='post' action='http://jasonxiang.great-site.net/final/LosAngeles.php'>
 			<input name="save_status" type="submit" class = "btn" value="Save"/>
-			<input name="save_status" type="submit" class = "btn" value="Unsave" />
+			<!--<input name="save_status" type="submit" class = "btn" value="Unsave" />-->
+			<script>
+				for (i = 0; i < saved_cities.length; i++){
+							if (saved_cities[i] == "LA")
+								$("input[name='save_status']").val("Unsave");
+
+				}
+
+			</script>
 		</form>
 
 		<?php
-
+			
 			$save_status = $_POST["save_status"];
-
+			echo "<script>
+				if ($save_status == 'Save')
+					$('input[name='saved_status']').val('Unsave');
+				else
+					$('input[name='saved_status']').val('Save');
+			</script>";
+		
 			//establish connection info
 			$server = "sql309.epizy.com";
 			$userid = "epiz_27886961";
