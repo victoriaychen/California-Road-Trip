@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>California Road Trip</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Bootstrap stylesheet and JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <!-- Font awesome -->
+    <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        //Function to shrink 'top' at scroll
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("slideshow").style.height = "200px";
+            } else {
+                document.getElementById("slideshow").style.height = "400px";
+            }
+        }
+    </script>
+
+    <style>
+        h1 {
+            text-align: center;
+            padding-top: 30px;
+            font-size: 60px;
+            font-weight: lighter;
+            color: #000;
+            letter-spacing: 3px;
+            text-align: center;
+            object-fit: cover;
+            z-index: 200;
+            text-transform: uppercase;
+
+        }
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            font-style: italic;
+            color: #ffa45b;
+            letter-spacing: 2px;
+            font-family: "Poppins";
+            text-transform: lowercase;
+        }
+
+        #slideshow {
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            width: 100%;
+            height: 400px;
+            z-index: -200;
+            transition: 0.7s;
+        }
+
+        #slideshow img {
+            width: 100%;
+            margin-top: -10%;
+            transform: translateY(10%);
+        }
+
+        #slideshow>div {
+            position: absolute;
+        }
+
+        .wave {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translate(-50%, -80%);
+        }
+
+        label {
+            font-weight: 500;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        label span {
+            display: inline-block;
+            object-fit: cover;
+            font-size: 150px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        label:hover span {
+            color: #eeb867;
+            transform: translateY(-30px);
+        }
+
+        #container {
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 30px;
+            position: relative;
+            padding: 10px;
+        }
+
+        .block {
+            display: inline-block;
+            width: auto;
+            height: 230px;
+            margin: 5px 15px 10px 15px;
+            position: relative;
+            transition: all 1s;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            width: 300px;
+            position: absolute;
+            text-align: center;
+            display: flex;
+            top: 30%;
+            left: 7%;
+        }
+
+
+        .image {
+            border-radius: 6px;
+            width: auto;
+            height: 230px;
+            transition: all 1s;
+        }
+
+
+        .block:hover .middle {
+            opacity: 1;
+        }
+
+        .block:hover .text {
+            opacity: 1;
+        }
+
+        .text {
+            width: 100%;
+            margin-left: 10px;
+            padding-right: 0px;
+            color: white !important;
+            font-size: 15px;
+            padding: 0px 0px;
+            letter-spacing: 0.5px;
+            text-align: center;
+            position: absolute;
+            font-family: "Poppins";
+        }
+
+        .text a {
+            text-align: center;
+            color: #7B7B7B;
+            font-family: "Poppins";
+
+        }
+
+        .text p {
+            letter-spacing: 3px;
+            color: #000;
+            position: relative;
+            bottom: 15px;
+            font-size: 100%;
+        }
+
+		
+        .block:hover .middle {
+            opacity: 1;
+        }
+
+        .block:hover .text {
+            opacity: 1;
+        }
+
+        .block:hover .text a {
+            opacity: 1;
+        }
+
+        .block:hover .image {
+            opacity: 0.2;
+            transform: scale(1.05);
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .city {
+            font-size: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
+            position: absolute;
+            bottom: -17px;
+            left: 20px;
+            font-family: "Poppins";
+
+        }
+
+        /* Testimonials */
+        #testimonials {
+            text-align: center;
+            padding: 10% 5% 10%;
+        }
+
+        .testimonial-text {
+            font-size: 120%;
+            line-height: 1.5;
+            font-family: "Poppins";
+        }
+
+        .carousel-control-next-icon:after {
+            content: '>';
+            font-size: 55px;
+            color: #000000;
+        }
+
+        .carousel-control-prev-icon:after {
+            content: '<';
+            font-size: 55px;
+            color: #000000;
+        }
+
+        /* Containers */
+        .container-fluid {
+            padding: 7% 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">California Road Trip</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://jasonxiang.great-site.net/final/yourTrip.php">Your Trip</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Cities
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="http://jasonxiang.great-site.net/final/LosAngeles.php">Los Angeles</a></li>
+                            <li><a class="dropdown-item" href="http://jasonxiang.great-site.net/final/Napa.php">Napa</a></li>
+                            <li><a class="dropdown-item" href="http://jasonxiang.great-site.net/final/SanDiego.php">San Diego</a></li>
+                            <li><a class="dropdown-item" href="http://jasonxiang.great-site.net/final/SanFrancisco.php" data-toggle="dropdown">San Francisco</a></li>
+                            <li><a class="dropdown-item" href="http://jasonxiang.great-site.net/final/SantaCruz.php">Santa Cruz</a></li>
+                            <li><a class="dropdown-item" href="http://jasonxiang.great-site.net/final/SantaBarbara.php">Santa Barbara</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="slideshow">
+        <div>
+            <img src="images/slide1.jpg">
+        </div>
+        <div>
+            <img src="images/slide2.jpg">
+        </div>
+        <div>
+            <img src="images/slide3.jpg">
+        </div>
+        <div>
+            <img src="images/slide4.jpg">
+        </div>
+        <div>
+            <img src="images/slide5.jpg">
+        </div>
+
+
+    </div>
+
+    <script>
+        //Slide show animation
+        $("#slideshow > div:gt(0)").hide();
+        setInterval(function() {
+            $('#slideshow > div:first')
+                .fadeOut(1000)
+                .next()
+                .fadeIn(1000)
+                .end()
+                .appendTo('#slideshow');
+        }, 3000);
+        //H1 text animation
+        const text = document.querySelectorAll('label');
+        text.forEach(label => {
+            label.innerHTML = label.textContent.split('').map((text, wave) =>
+                `<span style="transition-delay: ${wave * 50}ms">${text}</span>`).join('');
+        });
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 0) {
+                $('.wave').fadeOut();
+            } else {
+                $('.wave').fadeIn();
+            }
+        });
+    </script>
+
+
+    <h1>California Road Trip </h1>
+    <h2 class="slogan"> Plan your perfect west coast getaway </h2>
+
+    <section id="container">
+        <div class="row">
+            <div class="block">
+                <img class="image" src="images/SF.jpg" alt="San Francisco">
+                <div class="middle">
+                    <div class="text">
+                        <p>See the heart of the Golden State.</p>
+                        <a href="http://jasonxiang.great-site.net/final/SanFrancisco.php"> Learn More </a>
+                    </div>
+                </div>
+                <h3 class="city">San Francisco</h3>
+            </div>
+		
+            <div class="block">
+                <img class="image" src="images/santacruz.jpg" alt="santa cruz">
+                <div class="middle">
+
+                    <div class="text">
+                        <p>Visit this energetic surf town.</p>
+                        <a href="http://jasonxiang.great-site.net/final/SantaCruz.php"> Learn More </a>
+                    </div>
+                </div>
+                <h3 class="city">Santa Cruz</h3>
+            </div>
+
+        	<div class="block">
+            	<img class="image" src="images/SB.jpg" alt="santa barbara">
+            	<div class="middle">
+					<div class="text">
+						<p>The perfect pair: beach views and historic sites.</p>
+						<a href="http://jasonxiang.great-site.net/final/SantaBarbara.php"> Learn More </a>
+					</div>
+				</div>
+                <h3 class="city">Santa Barbara</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+		  <div class="block">
+            <img class="image" src="images/LA.jpg" alt=“”>
+            <div class="middle">
+                <div class="text">
+                    <p>Visit the entertainment hub of California.</p>
+                    <a href="http://jasonxiang.great-site.net/final/LosAngeles.php"> Learn More </a>
+                </div>
+            </div>
+            <h3 class="city">Los Angeles</h3>
+
+        </div>
+        <div class="block">
+            <img class="image" src="images/Napa.jpg" alt="Napa">
+            <div class="middle">
+
+                <div class="text">
+                    <p>Explore the vineyards and go wine tasting.</p>
+                    <a href="http://jasonxiang.great-site.net/final/Napa.php"> Learn More </a>
+                </div>
+            </div>
+            <h3 class="city">Napa Valley</h3>
+
+        </div>
+        <div class="block">
+            <img class="image" src="images/SD.jpg" alt="San Diego">
+            <div class="middle">
+
+                <div class="text">
+                    <p>Craving a beach trip and authentic Mexican food?</p>
+                    <a href="http://jasonxiang.great-site.net/final/SanDiego.php"> Learn More </a>
+                </div>
+            </div>
+            <h3 class="city">San Diego</h3>
+        </div>
+    </div>
+
+
+    <section id="testimonials">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <br><br>
+                    <p class="testimonial-text">I recommended this app for all of my friends who are planning a California road trip!</p>
+                    <p class="testimonial-text">-Alyssa, visited California in March 2021</p>
+
+                </div>
+                <div class="carousel-item">
+                    <br><br>
+                    <p class="testimonial-text">Using this app makes my california road trip more fun and less stressful.</p>
+                    <p class="testimonial-text">-Mark, visited California in August 2020</p>
+                </div>
+                <div class="carousel-item">
+                    <br><br>
+                    <p class="testimonial-text">After using this app for my California road trip, I have been using it for the last few years. </p>
+                    <p class="testimonial-text">-Elise, visited California in January 2020</p>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container-fluid">
+            <a href="https://www.facebook.com"><i class="footer-icon fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com"><i class="footer-icon fab fa-instagram"></i></a>
+            <a href="mailto:CaliforniaRoadTrip@gmail.com"><i class="footer-icon fas fa-envelope"></i></a>
+            <p>© Copyright 2021 California Road Trip</p>
+        </div>
+    </footer>
+</body>
+
+</html>
