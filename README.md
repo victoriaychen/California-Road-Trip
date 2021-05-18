@@ -9,3 +9,8 @@ Our web app is hosted on Infinity Free.
 
 This is our final project for COMP 20 Web Programming. 
 
+![Uploading Screen Shot 2021-05-18 at 10.22.11 AM.png…]()
+
+![Uploading Screen Shot 2021-05-18 at 10.24.08 AM.png…]()
+
+![Uploading Screen Shot 2021-05-18 at 10.25.12 AM.png…]()
