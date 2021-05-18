@@ -9,9 +9,12 @@ Our web app is hosted on Infinity Free.
 
 This is our final project for COMP 20 Web Programming. 
 
+Home page 
 <img width="1424" alt="Screen Shot 2021-05-18 at 10 22 11 AM" src="https://user-images.githubusercontent.com/54255894/118697132-d41b5980-b7c3-11eb-8c63-f88ff7a5db12.png">
 
+City page
 <img width="1424" alt="Screen Shot 2021-05-18 at 10 24 08 AM" src="https://user-images.githubusercontent.com/54255894/118697143-d67db380-b7c3-11eb-906b-70564a611840.png">
 
+Your Trip page
 <img width="1365" alt="Screen Shot 2021-05-18 at 10 25 12 AM" src="https://user-images.githubusercontent.com/54255894/118697148-d8477700-b7c3-11eb-9fe4-cd3408d4e646.png">
 
